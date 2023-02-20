@@ -7,6 +7,21 @@ public class BucketSort {
 
         if (array == null)
             return;
+        double[] positiveNumbers = Arrays.stream(array).filter(e -> e >= 0).toArray();
+        double[] negativeNumbers = Arrays.stream(array).filter(e -> e < 0).map(e -> -e).toArray();
+
+        sortPositive(negativeNumbers);
+        sortPositive(positiveNumbers);
+
+        for (int i = 0; i < negativeNumbers.length; i++) {
+            array[i] = -negativeNumbers[negativeNumbers.length - 1 - i];
+        }
+
+        if (positiveNumbers.length > 0)
+            System.arraycopy(positiveNumbers, 0, array, negativeNumbers.length, positiveNumbers.length);
+    }
+
+    private static void sortPositive(double[] array) {
 
         //noinspection unchecked
         List<Double>[] buckets = new LinkedList[array.length];
@@ -25,7 +40,7 @@ public class BucketSort {
 
         for (double curElement : array) {
             int index = (int) (curElement * array.length / (maxArrayValue + 1));
-                var curList = buckets[index];
+            var curList = buckets[index];
 
             boolean appended = false;
             for (int j = 0; j < curList.size(); j++) {
@@ -46,6 +61,5 @@ public class BucketSort {
                 elementIndex++;
             }
         }
-
     }
 }
