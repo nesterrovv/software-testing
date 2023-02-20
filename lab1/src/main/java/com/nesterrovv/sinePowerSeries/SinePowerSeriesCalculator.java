@@ -11,26 +11,35 @@ public class SinePowerSeriesCalculator {
         }
         return temporaryResult;
     }
-
-    public static double calculateSinePowerSeries(double functionArgument, int numberOfTerms) {
-        try {
-            if (numberOfTerms <= 0) {
-                throw new IncorrectTermsAmountExceptions();
-            }
-            int sign = 1;
-            functionArgument = (functionArgument*Math.PI/180) % 360;
-            double temporaryResult = 0;
-            for (int i = 1; i <= numberOfTerms; i+=2) {
-                double currentTerm = Math.pow(functionArgument, i) / calculateFactorial(i);
-                currentTerm *= sign;
-                sign *= -1;
-                temporaryResult += currentTerm;
-            }
-            return temporaryResult;
-        } catch (IncorrectTermsAmountExceptions incorrectTermsAmountExceptions) {
-            System.err.println(incorrectTermsAmountExceptions.getMessage());
-            return 0;
-        }
+    public static double calculateSinePowerSeries(double functionArgument) {
+        /*
+        taking into account the periodicity of the sine, we take the remainder of the division of the angle by 360
+        and translate this angle into radians
+         */
+        double x = Math.PI / 180 * (functionArgument % 360); //
+        // preparations
+        double member;
+        double sum = 0;
+        double tinyValue = 1e-15;
+        double sign = 1;
+        double power = x;
+        double factorial = 1;
+        double multiplier = 1;
+        // get sum of the series
+        do {
+            // calculating current member of the series
+            member = sign * power / factorial;
+            // Appending to sum
+            sum += member;
+            // preparing next step
+            sign *= -1;
+            multiplier++;
+            factorial *= multiplier;
+            multiplier++;
+            factorial *= multiplier;
+            power *= x * x;
+        } while (Math.abs(member) > tinyValue);
+        return sum;
     }
 
 }

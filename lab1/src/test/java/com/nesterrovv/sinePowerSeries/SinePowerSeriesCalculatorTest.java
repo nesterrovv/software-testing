@@ -14,70 +14,59 @@ public class SinePowerSeriesCalculatorTest  {
     int standardPositiveTermsAmount;
     int bigPositiveTermsAmount;
     int zeroTermsAmount;
+
+    int oneArgument;
+    int minusOneArgument;
     int negativeTermsAmount;
 
-    final double epsilon = 1e-6;
+    final double epsilon = 1e-11;
 
     @Before
     public void initializeData() {
         this.standardPositiveArgument = 42;
         this.standardNegativeArgument = -42;
         this.zeroArgument = 0;
-        this.bigPositiveArgument = 1000;
-        this.bigNegativeArgument = -1000;
+        this.bigPositiveArgument = 1234567;
+        this.bigNegativeArgument = -1234567;
         this.standardPositiveTermsAmount = 100;
         this.zeroTermsAmount = 0;
         this.negativeTermsAmount = -42;
     }
 
     @Test
-    public void doTest1() {
+    public void checkViaStandardPositiveArgument() {
         double expectedResult = 0.66913060635;
         Assert.assertEquals(expectedResult,
                 SinePowerSeriesCalculator
-                        .calculateSinePowerSeries(standardPositiveArgument, standardPositiveTermsAmount), epsilon);
+                        .calculateSinePowerSeries(standardPositiveArgument), epsilon);
     }
 
     @Test
-    public void doTest2() {
+    public void checkViaStandardNegativeArgument() {
         double expectedResult  = -0.66913060635;
         Assert.assertEquals(expectedResult,
-                SinePowerSeriesCalculator.calculateSinePowerSeries(standardNegativeArgument, standardPositiveTermsAmount), epsilon);
+                SinePowerSeriesCalculator.calculateSinePowerSeries(standardNegativeArgument), epsilon);
     }
 
     @Test
-    public void doTest3() {
+    public void checkViaZeroArgument() {
         double expectedResult  = 0;
         Assert.assertEquals(expectedResult,
-                SinePowerSeriesCalculator.calculateSinePowerSeries(zeroArgument, standardPositiveTermsAmount), epsilon);
+                SinePowerSeriesCalculator.calculateSinePowerSeries(zeroArgument), epsilon);
     }
 
     @Test
-    public void doTest4() {
-        double expectedResult  = -0.9848077530104753;
+    public void checkViaBigPositiveArgument() {
+        double expectedResult  = 0.79863551004;
         Assert.assertEquals(expectedResult,
-                SinePowerSeriesCalculator.calculateSinePowerSeries(bigPositiveArgument, standardPositiveTermsAmount), epsilon);
+                SinePowerSeriesCalculator.calculateSinePowerSeries(bigPositiveArgument), epsilon);
     }
 
     @Test
-    public void doTest5() {
-        double expectedResult  = 0.9848077530104753;
+    public void checkViaBigNegativeArgument() {
+        double expectedResult  = -0.79863551004;
         Assert.assertEquals(expectedResult,
-                SinePowerSeriesCalculator.calculateSinePowerSeries(bigNegativeArgument, standardPositiveTermsAmount), epsilon);
-    }
-
-    @Test
-    public void doTest6() {
-        double expectedResult  = 0;
-        Assert.assertEquals(expectedResult,
-                SinePowerSeriesCalculator.calculateSinePowerSeries(bigNegativeArgument, zeroTermsAmount), epsilon);
-    }
-
-    @Test
-    public void doTest7() {
-        double expectedResult  = 0;
-        Assert.assertEquals(expectedResult,
-                SinePowerSeriesCalculator.calculateSinePowerSeries(bigNegativeArgument, negativeTermsAmount), epsilon);
+                SinePowerSeriesCalculator.calculateSinePowerSeries(bigNegativeArgument), epsilon);
     }
 
 }
