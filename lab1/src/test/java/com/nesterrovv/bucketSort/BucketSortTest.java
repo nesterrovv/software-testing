@@ -1,4 +1,4 @@
-package com.nesterovv.bucketSort;
+package com.nesterrovv.bucketSort;
 
 import com.nesterrovv.bucketSort.BucketSort;
 import org.junit.Assert;

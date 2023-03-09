@@ -1,5 +1,6 @@
 package com.nesterrovv.sinePowerSeries;
 
+import com.nesterrovv.sinePowerSeries.SinePowerSeriesCalculator;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
