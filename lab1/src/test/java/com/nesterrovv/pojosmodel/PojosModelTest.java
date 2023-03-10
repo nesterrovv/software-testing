@@ -1,5 +1,8 @@
-package com.nesterrovv.pojosModel;
+package com.nesterrovv.pojosmodel;
 
+import com.nesterrovv.pojosModel.Entity;
+import com.nesterrovv.pojosModel.Galaxy;
+import com.nesterrovv.pojosModel.World;
 import org.junit.Assert;
 import org.junit.Test;
 
