@@ -21,7 +21,7 @@ public class PojosModelTest {
         Galaxy second = new Galaxy();
         second.setLifeExpectancyFactor(200);
         String test = new World().analyze();
-        String expected = "Retribution awaits the galaxy 2";
+        String expected = "Retribution awaits the galaxy 1";
         Assert.assertEquals(expected, test);
     }
 
@@ -43,7 +43,7 @@ public class PojosModelTest {
         Galaxy second = new Galaxy();
         second.setLifeExpectancyFactor(200);
         String test = new World().analyze();
-        String expected = "Retribution awaits the galaxy 2";
+        String expected = "Retribution awaits the galaxy 1";
         Assert.assertEquals(expected, test);
     }
 

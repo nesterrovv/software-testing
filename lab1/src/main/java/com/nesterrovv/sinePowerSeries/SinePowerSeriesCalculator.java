@@ -4,13 +4,6 @@ import com.nesterrovv.exceptions.IncorrectTermsAmountExceptions;
 
 public class SinePowerSeriesCalculator {
 
-    private static double calculateFactorial(double functionArgument) {
-        double temporaryResult = 1;
-        for (int i = 1; i <= functionArgument; i++) {
-            temporaryResult *= i;
-        }
-        return temporaryResult;
-    }
     public static double calculateSinePowerSeries(double functionArgument) {
         /*
         taking into account the periodicity of the sine, we take the remainder of the division of the angle by 360

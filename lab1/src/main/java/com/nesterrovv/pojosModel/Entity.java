@@ -26,7 +26,6 @@ public class Entity {
     }
 
     public void attack(Galaxy galaxy) {
-        System.out.println(this.getName() + " participates in the battle!");
         galaxy.setLifeExpectancyFactor(galaxy.getLifeExpectancyFactor() - 100);
     }
 
