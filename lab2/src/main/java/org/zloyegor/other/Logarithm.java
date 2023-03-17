@@ -1,11 +1,7 @@
 package org.zloyegor.other;
 
-import org.zloyegor.Calculable;
-
-public class Logarithm implements Calculable {
-
-    @Override
-    public double calculate(double x, double accuracy) {
+public class Logarithm {
+    public static double calculate(double x, double accuracy) {
 
         if (x <= 0) {
             throw new IllegalArgumentException("x must be > 0");
@@ -43,5 +39,9 @@ public class Logarithm implements Calculable {
 
             return sum;
         }
+    }
+
+    public static double calculate(double x, double base, double accuracy) {
+        return calculate(x, accuracy) / calculate(base, accuracy);
     }
 }

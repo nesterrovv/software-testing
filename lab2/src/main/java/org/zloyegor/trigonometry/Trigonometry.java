@@ -1,11 +1,8 @@
 package org.zloyegor.trigonometry;
 
-import org.zloyegor.Calculable;
+public class Trigonometry {
 
-public class Sine implements Calculable {
-
-    @Override
-    public double calculate(double x, double accuracy) {
+    public static double sin(double x, double accuracy) {
         /*
         taking into account the periodicity of the sine, we take the remainder of the division of the angle by 360
         and translate this angle into radians
