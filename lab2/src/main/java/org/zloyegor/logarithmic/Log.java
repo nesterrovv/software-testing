@@ -1,10 +1,12 @@
-package org.zloyegor.other;
+package org.zloyegor.logarithmic;
 
-public class Logarithm {
+import static java.lang.Double.NaN;
+
+public class Log {
     public static double calculate(double x, double accuracy) {
 
         if (x <= 0) {
-            throw new IllegalArgumentException("x must be > 0");
+            return NaN;
         } else if (x < 1) {
             double result = 0.0;
             double term = x - 1.0;
@@ -39,9 +41,5 @@ public class Logarithm {
 
             return sum;
         }
-    }
-
-    public static double calculate(double x, double base, double accuracy) {
-        return calculate(x, accuracy) / calculate(base, accuracy);
     }
 }
