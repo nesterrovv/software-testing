@@ -1,6 +1,6 @@
-package org.example.trigonometry;
+package org.zloyegor.trigonometry;
 
-import org.example.Calculable;
+import org.zloyegor.Calculable;
 
 public class Sine implements Calculable {
 

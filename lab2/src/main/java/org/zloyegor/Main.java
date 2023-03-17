@@ -1,14 +1,12 @@
-package org.example;
+package org.zloyegor;
 
-import org.example.other.Logarithm;
-import org.example.trigonometry.Sine;
+import org.zloyegor.other.Logarithm;
+import org.zloyegor.trigonometry.Sine;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
 
         var sin = new Sine();
-
         System.out.println(sin.calculate(90, 0.000000001));
 
         var ln = new Logarithm();
