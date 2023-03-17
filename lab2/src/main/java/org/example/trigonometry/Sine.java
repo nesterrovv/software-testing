@@ -1,17 +1,19 @@
-package com.nesterrovv.sinePowerSeries;
+package org.example.trigonometry;
 
-public class SinePowerSeriesCalculator {
+import org.example.Calculable;
 
-    public static double calculateSinePowerSeries(double functionArgument) {
+public class Sine implements Calculable {
+
+    @Override
+    public double calculate(double x, double accuracy) {
         /*
         taking into account the periodicity of the sine, we take the remainder of the division of the angle by 360
         and translate this angle into radians
          */
-        double x = Math.PI / 180 * (functionArgument % 360); //
+        x = Math.PI / 180 * (x % 360); //
         // preparations
         double member;
         double sum = 0;
-        double tinyValue = 1e-15;
         double sign = 1;
         double power = x;
         double factorial = 1;
@@ -29,8 +31,7 @@ public class SinePowerSeriesCalculator {
             multiplier++;
             factorial *= multiplier;
             power *= x * x;
-        } while (Math.abs(member) > tinyValue);
+        } while (Math.abs(member) > accuracy);
         return sum;
     }
-
 }
