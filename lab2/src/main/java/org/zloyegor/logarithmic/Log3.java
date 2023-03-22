@@ -1,7 +1,8 @@
 package org.zloyegor.logarithmic;
 
-public class Log3 {
-    public static double calculate(double x, double accuracy) {
-        return Log.calculate(x, accuracy) / Log.calculate(3, accuracy);
+public class Log3 implements Logarithmic {
+    public double calculate(double x, double accuracy) {
+        var log = new Log();
+        return log.calculate(x, accuracy) / log.calculate(3, accuracy);
     }
 }
