@@ -6,4 +6,6 @@ public interface Trigonometry {
     static double angleToRad(double x) {
         return Math.PI / 180 * (x % 360);
     }
+
+    double calculate(double x, double accuracy);
 }
