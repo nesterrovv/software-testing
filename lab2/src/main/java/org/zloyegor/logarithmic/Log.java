@@ -2,8 +2,7 @@ package org.zloyegor.logarithmic;
 
 import static java.lang.Double.NaN;
 
-public class Log implements Logarithmic{
-    @Override
+public class Log {
     public double calculate(double x, double accuracy) {
 
         if (x <= 0) {

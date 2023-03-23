@@ -4,7 +4,6 @@ import static java.lang.Double.NaN;
 
 public class Sin implements Trigonometry {
 
-    @Override
     public double calculate(double x, double accuracy) {
         /*
         taking into account the periodicity of the sine, we take the remainder of the division of the angle by 360
