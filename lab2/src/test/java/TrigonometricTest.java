@@ -45,11 +45,11 @@ public class TrigonometricTest {
         Mockito.when(cos.calculate(eq(1), anyDouble())).thenReturn(0.540);
         Mockito.when(cos.calculate(eq(2), anyDouble())).thenReturn(-0.416);
         Mockito.when(cos.calculate(eq(4), anyDouble())).thenReturn(-0.654);
-        //Assertions.assertEquals(0, sin.calculate(-180, 0.0001));
-        Assertions.assertEquals(0, sin.calculate(0, 0.0001));
-        //Assertions.assertEquals(1, sin.calculate(90, 0.0001));
-        //Assertions.assertEquals(0, sin.calculate(180, 0.00001));
-        //Assertions.assertEquals(-1, sin.calculate(270, 0.00001));
+        Assertions.assertEquals(0.0, sin.calculate(-180, 0.0001), 0.0001);
+        Assertions.assertEquals(0, sin.calculate(0, 0.0001), 0.0001);
+        Assertions.assertEquals(1, sin.calculate(90, 0.0001), 0.0001);
+        Assertions.assertEquals(0, sin.calculate(180, 0.00001), 0.0001);
+        Assertions.assertEquals(-1, sin.calculate(270, 0.00001), 0.0001);
         Assertions.assertEquals(0.017, BigDecimal.valueOf(sin.calculate(1, 0.00001))
                 .setScale(3, RoundingMode.HALF_UP).doubleValue());
         Assertions.assertEquals(0.035, BigDecimal.valueOf(sin.calculate(2, 0.00001))
@@ -95,11 +95,11 @@ public class TrigonometricTest {
         Mockito.when(sin.calculate(eq(1), anyDouble())).thenReturn(0.841);
         Mockito.when(sin.calculate(eq(2), anyDouble())).thenReturn(0.909);
         Mockito.when(sin.calculate(eq(4), anyDouble())).thenReturn(-0.757);
-        //Assertions.assertEquals(Double.NaN, csc.calculate(-180,0.0001 ));
+        Assertions.assertEquals(Double.NaN, csc.calculate(-180,0.0001), 0.0001);
         Assertions.assertEquals(Double.NaN, csc.calculate(0,0.0001 ));
         Assertions.assertEquals(1, BigDecimal.valueOf(csc.calculate(90,0.0001 ))
                 .setScale(3, RoundingMode.HALF_UP).doubleValue());
-        //Assertions.assertEquals(1, csc.calculate(90,0.0001 ));
+        Assertions.assertEquals(1, csc.calculate(90,0.0001), 0.0001);
         Assertions.assertEquals(-1, BigDecimal.valueOf(csc.calculate(270,0.0001 ))
                 .setScale(3, RoundingMode.HALF_UP).doubleValue());
         Assertions.assertEquals(57.299, BigDecimal.valueOf(csc.calculate(1,0.0001 ))
@@ -132,37 +132,34 @@ public class TrigonometricTest {
     @Test
     public void testIntegrateSec(){
         Sec sec = new Sec();
-        //Assertions.assertEquals(-1, sec.calculate(-180,0.0001 ));
-        Assertions.assertEquals(1, sec.calculate(0,0.0001 ));
-        //Assertions.assertEquals(0, BigDecimal.valueOf(sec.calculate(90,0.0001 ))
-        //        .setScale(3, RoundingMode.HALF_UP).doubleValue());
-        //Assertions.assertEquals(Double.NaN, sec.calculate(90,0.0001 ));
-        //Assertions.assertEquals(0, BigDecimal.valueOf(sec.calculate(270,0.0001 ))
-        //        .setScale(3, RoundingMode.HALF_UP).doubleValue());
+        Assertions.assertEquals(-1, sec.calculate(-180,0.0001), 0.0001);
+        Assertions.assertEquals(1, sec.calculate(0,0.0001), 0.0001);
+        Assertions.assertEquals(Double.NaN, sec.calculate(90,0.0001));
+        Assertions.assertEquals(Double.NaN, sec.calculate(270,0.0001));
         Assertions.assertEquals(1, BigDecimal.valueOf(sec.calculate(1,0.0001 ))
                 .setScale(3, RoundingMode.HALF_UP).doubleValue());
-        //Assertions.assertEquals(-0.458, BigDecimal.valueOf(sec.calculate(2,0.0001 ))
-        //        .setScale(3, RoundingMode.HALF_UP).doubleValue());
-        //Assertions.assertEquals(0.864, BigDecimal.valueOf(sec.calculate(4,0.0001 ))
-        //        .setScale(3, RoundingMode.HALF_UP).doubleValue());
+        Assertions.assertEquals(1.001, BigDecimal.valueOf(sec.calculate(2,0.0001))
+                .setScale(3, RoundingMode.HALF_UP).doubleValue(), 0.0001);
+        Assertions.assertEquals(1.002, BigDecimal.valueOf(sec.calculate(4,0.0001 ))
+                .setScale(3, RoundingMode.HALF_UP).doubleValue(), 0.0001);
     }
-    // TODO add after scs fixing, change radians to angles in arguments
-//    @Test
-//    public void testIntegrateCsc(){
-//        Csc csc = new Csc();
-//        Assertions.assertEquals(Double.NaN, csc.calculate(-Math.PI,0.0001 ));
-//        Assertions.assertEquals(Double.NaN, csc.calculate(0,0.0001 ));
-//        Assertions.assertEquals(1, BigDecimal.valueOf(csc.calculate(Math.PI/2,0.0001 ))
-//                .setScale(3, RoundingMode.HALF_UP).doubleValue());
-//        Assertions.assertEquals(Double.NaN, csc.calculate(Math.PI,0.0001 ));
-//        Assertions.assertEquals(-1, BigDecimal.valueOf(csc.calculate(3* Math.PI/2,0.0001 ))
-//                .setScale(3, RoundingMode.HALF_UP).doubleValue());
-//        Assertions.assertEquals(1.188, BigDecimal.valueOf(csc.calculate(1,0.0001 ))
-//                .setScale(3, RoundingMode.HALF_UP).doubleValue());
-//        Assertions.assertEquals(1.100, BigDecimal.valueOf(csc.calculate(2,0.0001 ))
-//                .setScale(3, RoundingMode.HALF_UP).doubleValue());
-//        Assertions.assertEquals(-1.321, BigDecimal.valueOf(csc.calculate(4,0.0001 ))
-//                .setScale(3, RoundingMode.HALF_UP).doubleValue());
-//
-//    }
+
+    @Test
+    public void testIntegrateCsc(){
+        Csc csc = new Csc();
+        Assertions.assertEquals(Double.NaN, csc.calculate(-180,0.0001), 0.0001);
+        Assertions.assertEquals(Double.NaN, csc.calculate(0,0.0001 ), 0.0001);
+        Assertions.assertEquals(-1, BigDecimal.valueOf(csc.calculate(-90,0.0001 ))
+                .setScale(3, RoundingMode.HALF_UP).doubleValue(), 0.0001);
+        Assertions.assertEquals(1, csc.calculate(90,0.0001), 0.0001);
+        Assertions.assertEquals(-1, BigDecimal.valueOf(csc.calculate(270,0.0001 ))
+                .setScale(3, RoundingMode.HALF_UP).doubleValue(), 0.0001);
+        Assertions.assertEquals(57.299, BigDecimal.valueOf(csc.calculate(1,0.0001 ))
+                .setScale(3, RoundingMode.HALF_UP).doubleValue(), 0.0001);
+        Assertions.assertEquals(28.654, BigDecimal.valueOf(csc.calculate(2,0.0001 ))
+                .setScale(3, RoundingMode.HALF_UP).doubleValue(), 0.0001);
+        Assertions.assertEquals(14.336, BigDecimal.valueOf(csc.calculate(4,0.0001 ))
+                .setScale(3, RoundingMode.HALF_UP).doubleValue(), 0.0001);
+
+    }
 }
