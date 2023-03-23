@@ -4,7 +4,7 @@ import static java.lang.Double.NaN;
 
 public class Sin implements Trigonometry {
 
-    public static double calculate(double x, double accuracy) {
+    public double calculate(double x, double accuracy) {
         /*
         taking into account the periodicity of the sine, we take the remainder of the division of the angle by 360
         and translate this angle into radians

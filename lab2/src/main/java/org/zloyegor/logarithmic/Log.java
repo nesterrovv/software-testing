@@ -3,7 +3,7 @@ package org.zloyegor.logarithmic;
 import static java.lang.Double.NaN;
 
 public class Log {
-    public static double calculate(double x, double accuracy) {
+    public double calculate(double x, double accuracy) {
 
         if (x <= 0) {
             return NaN;
