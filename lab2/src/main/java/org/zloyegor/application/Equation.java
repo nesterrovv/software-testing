@@ -12,9 +12,7 @@ import org.zloyegor.trigonometry.Sec;
 
 public class Equation {
 
-    private static final double accuracy = 1e-10;
-
-    public double calculateFirstSystem(double x) {
+    public double calculateFirstSystem(double x, double accuracy) {
         if (x <= 0) {
             return (((Math.pow(Math.pow(new Csc().calculate(x, accuracy) / new Sin().calculate(x, accuracy), 3) /
                     new Sec().calculate(x, accuracy), 3) - (new Tan().calculate(x, accuracy)
@@ -26,7 +24,7 @@ public class Equation {
         }
     }
 
-    public double calculateSecondSystem(double x) {
+    public double calculateSecondSystem(double x, double accuracy) {
         Csc csc = new Csc();
         Sin sin = new Sin();
         Sec sec = new Sec();
