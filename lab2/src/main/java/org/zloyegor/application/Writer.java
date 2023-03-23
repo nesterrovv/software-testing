@@ -6,29 +6,29 @@ public class Writer {
     private static BufferedReader reader;
     private static FileWriter fileWriter;
 
-    static {
+    public static void open(String path){
         try {
             ByteArrayInputStream in = new ByteArrayInputStream("y".getBytes());
             System.setIn(in);
             reader = new BufferedReader(new InputStreamReader(System.in));
-            fileWriter = new FileWriter(new File("src/main/resources/out.csv"));
+            fileWriter = new FileWriter(path);
         } catch (IOException e) {
             System.out.println("IO file error");
         }
     }
-    public static void print(double x, double res, Modules module){
+    public static void write(double x, double res, String functionName){
         try {
-            System.out.println("Print value for module " + module.toString() + "? [y/n]");
-            String ans = reader.readLine();
-            if (ans == null) return;
-            while (!ans.equals("y") && !ans.equals("n")){
-                System.out.println("Wrong answer");
-                ans = reader.readLine();
-            }
-            if (ans.equals("y")){
-                fileWriter.write(x + "," + res + ", module - " + module.toString() + "\n");
+//            System.out.println("Print value for module " + module.toString() + "? [y/n]");
+//            String ans = reader.readLine();
+//            if (ans == null) return;
+//            while (!ans.equals("y") && !ans.equals("n")){
+//                System.out.println("Wrong answer");
+//                ans = reader.readLine();
+//            }
+//            if (ans.equals("y")){
+                fileWriter.write(x + "," + res + "," + functionName + "\n");
                 fileWriter.flush();
-            }
+//            }
 
         } catch (IOException e){
             System.out.println("IO error");
